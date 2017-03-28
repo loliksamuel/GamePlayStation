@@ -1,60 +1,72 @@
+import java.awt.*;
+
 /**
  * Created by lolik on 2017-03-28.
  */
-public class GameKarate implements Game_I {
-    private String name="karate";
+public class GameKarate  extends  Game_Abs    {
+    private String name="KARATE!";
     private int hitCounter=0;
+
+
+    private Color screenColor = Color.YELLOW;
+    @Override
+    public void restart()
+    {
+        hitCounter=0;
+    }
+    @Override
+    public Color getColor() {
+        return screenColor;
+    }
     @Override
     public String getName() {
         return name;
     }
 
     @Override
-    public void executeUp() {
+    public String executeUp() {
         hitCounter++;
-        if(hitCounter>10)
+        if(hitCounter>9)
         {
             hitCounter=0;
-            System.out.println("oponent is dead");
+            return "10'th upper cut to oponent. he is dead!";
         }
-        System.out.println("sending uppercut to oponent");
+        return hitCounter+ "'th uppercut to oponent. ";
     }
 
 
     @Override
-    public void executeDn() {
+    public String executeDn() {
         hitCounter+=2;
-        if(hitCounter>10)
-        {
-            hitCounter=0;
-            System.out.println("oponent is dead");
+        if(hitCounter>9) {
+            hitCounter = 0;
+            return "another lowercut elbow to oponent. he is dead!";
         }
-
-        System.out.println("sending lowercut elbow to oponent");
+        return "another lowercut elbow to oponent.";
     }
 
 
     @Override
-    public void executeLt() {
+    public String executeLt() {
 
         hitCounter+=5;
-        if(hitCounter>10)
+        if(hitCounter>9)
         {
             hitCounter=0;
-            System.out.println("oponent is dead");
+            return "another left kick elbow to oponent. he is dead!";
         }
-        System.out.println("sending left kick  to oponent" );
+        return "another left kick elbow to oponent.";
     }
 
     @Override
-    public void executeRt() {
+    public String executeRt() {
         hitCounter+=5;
         if(hitCounter>10)
         {
             hitCounter=0;
-            System.out.println("oponent is dead");
+            return "another right kick elbow to oponent. he is dead!";
         }
-        System.out.println("sending right kick  to oponent  to oponent");
+        return "another right kick elbow to oponent.";
     }
 
 
